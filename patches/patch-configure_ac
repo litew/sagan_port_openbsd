@@ -1,0 +1,37 @@
+$OpenBSD: patch-configure_ac,v 1.1 2020/02/04 02:26:46 litew Exp $
+
+--- configure.ac.orig
++++ configure.ac
+@@ -30,8 +30,9 @@
+             ;;
+         *-*-openbsd*)
+             CFLAGS="${CFLAGS} -D__OpenBSD__"
+-            CPPFLAGS="${CPPFLAGS} -I/usr/local/include -I/usr/local/include/libnet-1.1"
+-            LDFLAGS="${LDFLAGS} -L/usr/local/lib -I/usr/local/lib/libnet-1.1"
++            CPPFLAGS="${CPPFLAGS} -I/usr/local/include"
++            LDFLAGS="${LDFLAGS} -L/usr/local/lib"
++            HAVE_RT="yes"
+             ;;
+         *darwin*|*Darwin*)
+             CFLAGS="${CFLAGS} -D__Darwin__"
+@@ -283,7 +284,19 @@
+ 
+ # OSX doesn't have librt - this needs to be fixed!
+ 
+-AC_CHECK_LIB(rt, main,,AC_MSG_ERROR(Sagan needs librt!))
++LIBRT=""
++AC_CHECK_LIB(rt, main,, LIBRT="no")
++
++if test "$LIBRT" = "no"; then
++    if test "$HAVE_RT" = "yes"; then
++        echo "   USING BUILTIN RT (OPENBSD)"
++        echo
++    else
++        echo "   ERROR! librt library not found,"
++        echo
++        exit 1
++    fi
++fi
+ 
+ # libpthread
+ AC_ARG_WITH(libpthread_includes,

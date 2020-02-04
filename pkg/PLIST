@@ -1,0 +1,27 @@
+@comment $OpenBSD: PLIST,v$
+@newgroup _sagan:848
+@newuser _sagan:848:_sagan:daemon:Sagan Account:/var/sagan:/sbin/nologin
+@rcscript ${RCDIR}/sagan
+@bin bin/sagan
+@man man/man8/sagan.8
+@sample ${SYSCONFDIR}/sagan/
+@sample ${SYSCONFDIR}/sagan/rules/
+share/examples/sagan/sagan.yaml
+@sample ${SYSCONFDIR}/sagan/sagan.yaml
+@mode 750
+@owner _sagan
+@group _sagan
+share/examples/sagan/
+share/examples/sagan/rules/
+@mode 640
+@owner _sagan
+@group _sagan
+@mode 750
+@owner _sagan
+@group _sagan
+@sample ${VARBASE}/sagan/
+@sample ${VARBASE}/sagan/fifo/
+@sample ${VARBASE}/log/sagan/
+@sample ${VARBASE}/run/sagan/
+@exec mkfifo ${VARBASE}/sagan/fifo/sagan.fifo; chown _sagan:_sagan ${VARBASE}/sagan/fifo/sagan.fifo; chmod 420 ${VARBASE}/sagan/fifo/sagan.fifo
+@unexec rm ${VARBASE}/sagan/fifo/sagan.fifo

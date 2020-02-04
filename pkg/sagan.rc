@@ -1,0 +1,9 @@
+#!/bin/ksh
+#
+# $OpenBSD: sagan.rc,v 1.0 2020/02/05 01:03:23 litew Exp $
+
+daemon="${TRUEPREFIX}/bin/sagan -D -u _sagan -f /etc/sagan/sagan.yaml"
+
+. /etc/rc.d/rc.subr
+
+rc_cmd $1
