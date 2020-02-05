@@ -173,7 +173,7 @@ CONFIGURE_STYLE =	autoreconf
 CONFIGURE_ARGS =	--enable-geoip \
                         --enable-redis \
                         --enable-libpcap \
-                        --enable-bluedot \
+#                        --enable-bluedot \
                         --enable-system-strstr
 #CONFIGURE_ENV =	???
 
