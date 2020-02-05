@@ -27,7 +27,7 @@ COMMENT =	log analysis engine
 # DISTNAME should not include suffix (like .tar.gz .tgz .tar.bz2 etc.)
 SAGAN_V =	2.0.0
 DISTNAME =	sagan
-REVISION =	0
+REVISION =	3
 # PKGNAME defaults to DISTNAME unless changed
 PKGNAME =	sagan-${SAGAN_V}
 #PKGNAME-foo =	???	for multi packages
