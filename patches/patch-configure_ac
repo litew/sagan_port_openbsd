@@ -1,4 +1,4 @@
-$OpenBSD: patch-configure_ac,v 1.1 2020/02/04 02:26:46 litew Exp $
+$OpenBSD$
 
 Index: configure.ac
 --- configure.ac.orig

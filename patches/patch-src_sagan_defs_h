@@ -1,4 +1,4 @@
-$OpenBSD: patch-sagan_defs_h,v 1.1 2020/02/05 03:56:13 litew Exp $
+$OpenBSD$
 
 Index: src/sagan-defs.h
 --- src/sagan-defs.h.orig
