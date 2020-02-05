@@ -81,7 +81,7 @@ PERMIT_PACKAGE =	Yes
 # If pledge is used, annotate with `uses pledge()' in a comment
 
 # "make port-lib-depends-check" can help
-WANTLIB =		c m pthread
+WANTLIB =		c m pthread pcap
 
 # where the source files and patches can be fetched
 #
