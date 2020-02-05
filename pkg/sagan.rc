@@ -2,7 +2,10 @@
 #
 # $OpenBSD: sagan.rc,v 1.0 2020/02/05 01:03:23 litew Exp $
 
-daemon="${TRUEPREFIX}/bin/sagan -D -u _sagan -f /etc/sagan/sagan.yaml"
+daemon="/usr/local/bin/sagan"
+daemon_flags="-D"
+
+rc_bg=YES
 
 . /etc/rc.d/rc.subr
 
