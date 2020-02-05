@@ -21,6 +21,7 @@ share/examples/sagan/rules/
 @group _sagan
 @sample ${VARBASE}/sagan/
 @sample ${VARBASE}/sagan/fifo/
+@sample ${VARBASE}/sagan/ipc/
 @sample ${VARBASE}/log/sagan/
 @sample ${VARBASE}/run/sagan/
 @exec mkfifo ${VARBASE}/sagan/fifo/sagan.fifo; chown _sagan:_sagan ${VARBASE}/sagan/fifo/sagan.fifo; chmod 420 ${VARBASE}/sagan/fifo/sagan.fifo
