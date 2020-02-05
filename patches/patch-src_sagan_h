@@ -1,8 +1,9 @@
 $OpenBSD: patch-sagan_h,v 1.1 2020/02/04 02:28:23 litew Exp $
 
+Index: src/sagan.h
 --- src/sagan.h.orig
 +++ src/sagan.h
-@@ -139,17 +139,17 @@
+@@ -139,17 +139,17 @@ void      Set_Pipe_Size( FILE * );
  
  
  #ifdef __OpenBSD__

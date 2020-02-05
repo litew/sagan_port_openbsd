@@ -1,0 +1,53 @@
+$OpenBSD$
+
+Index: etc/sagan.yaml
+--- etc/sagan.yaml.orig
++++ etc/sagan.yaml
+@@ -22,9 +22,9 @@ vars:
+   sagan-groups: 
+ 
+     FIFO: "/var/sagan/fifo/sagan.fifo"
+-    RULE_PATH: "/usr/local/etc/sagan-rules"
++    RULE_PATH: "/etc/sagan/rules"
+     LOCKFILE: "/var/run/sagan/sagan.pid"
+-    LOG_PATH: "/var/log/sagan"	
++    LOG_PATH: "/var/log/sagan"
+ 
+   # HOME_NET and EXTERNAL_NET function similar to Suricata/Snort.  However, 
+   # it's rare you'll want to set them.  In most situations leaving it set
+@@ -211,7 +211,7 @@ sagan-core:
+ 
+   mmap-ipc: 
+ 
+-    ipc-directory: /dev/shm
++    ipc-directory: /var/sagan/ipc
+     xbit: $MMAP_DEFAULT
+     flexbit: $MMAP_DEFAULT
+     after: $MMAP_DEFAULT
+@@ -249,7 +249,7 @@ sagan-core:
+   geoip: 
+    
+     enabled: no
+-    country_database: "/usr/local/share/GeoIP2/GeoLite2-Country.mmdb"
++    country_database: "/var/db/GeoIP/GeoLite2-Country.mmdb"
+     skip_networks: "8.8.8.8/32, 8.8.4.4/32"
+ 
+   # Liblognorm is a fast sample-base log normalization library.  Sagan uses
+@@ -639,7 +639,7 @@ rules-files: 
+   - $RULE_PATH/fortinet.rules
+   - $RULE_PATH/ftpd.rules
+   #- $RULE_PATH/grsec.rules
+-  - $RULE_PATH/honeyd.rules
++  #- $RULE_PATH/honeyd.rules
+   #- $RULE_PATH/hordeimp.rules
+   #- $RULE_PATH/hostapd.rules
+   - $RULE_PATH/huawei.rules
+@@ -661,7 +661,7 @@ rules-files: 
+   - $RULE_PATH/oracle.rules
+   #- $RULE_PATH/ossec-mi.rules
+   #- $RULE_PATH/ossec.rules
+-  - $RULE_PATH/palo-alto.rules
++  #- $RULE_PATH/palo-alto.rules
+   - $RULE_PATH/php.rules
+   - $RULE_PATH/postfix.rules
+   - $RULE_PATH/postgresql.rules

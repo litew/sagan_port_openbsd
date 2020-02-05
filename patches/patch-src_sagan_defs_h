@@ -1,0 +1,40 @@
+$OpenBSD: patch-sagan_defs_h,v 1.1 2020/02/05 03:56:13 litew Exp $
+
+Index: src/sagan-defs.h
+--- src/sagan-defs.h.orig
++++ src/sagan-defs.h
+@@ -73,7 +73,7 @@ typedef void json_object;
+ #define JSON_MAX_NEST	      10
+ #define JSON_MAX_SIZE	      131072
+ 
+-#define DEFAULT_JSON_INPUT_MAP          "/usr/local/etc/sagan-rules/json-input.map"
++#define DEFAULT_JSON_INPUT_MAP          "/etc/sagan/rules/json-input.map"
+ #define INPUT_PIPE                      1
+ #define INPUT_JSON                      2
+ 
+@@ -138,13 +138,13 @@ typedef void json_object;
+ #define LOCKFILE 		"/var/run/sagan/sagan.pid"
+ #define SAGANLOG		"/var/log/sagan/sagan.log"
+ #define SAGANLOGPATH		"/var/log/sagan"
+-#define FIFO			"/var/run/sagan.fifo"
+-#define RULE_PATH		"/usr/local/etc/sagan-rules"
++#define FIFO			"/var/sagan/fifo/sagan.fifo"
++#define RULE_PATH		"/etc/sagan/rules"
+ 
+ #define HOME_NET		"any"
+ #define EXTERNAL_NET		"any"
+ 
+-#define RUNAS			"sagan"
++#define RUNAS			"_sagan"
+ 
+ #define PLOG_INTERFACE		"eth0"
+ #define PLOG_FILTER		"port 514"
+@@ -197,7 +197,7 @@ typedef void json_object;
+ 
+ /* Locations of IPC/Share memory "files" */
+ 
+-#define IPC_DIRECTORY			"/dev/shm"
++#define IPC_DIRECTORY			"/var/sagan/ipc"
+ 
+ #define COUNTERS_IPC_FILE 		"sagan-counters.shared"
+ #define FLEXBIT_IPC_FILE 	        "sagan-flexbits.shared"

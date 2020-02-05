@@ -1,8 +1,9 @@
 $OpenBSD: patch-configure_ac,v 1.1 2020/02/04 02:26:46 litew Exp $
 
+Index: configure.ac
 --- configure.ac.orig
 +++ configure.ac
-@@ -30,8 +30,9 @@
+@@ -30,8 +30,9 @@ echo -n "installation for $host OS... "
              ;;
          *-*-openbsd*)
              CFLAGS="${CFLAGS} -D__OpenBSD__"
@@ -14,14 +15,14 @@ $OpenBSD: patch-configure_ac,v 1.1 2020/02/04 02:26:46 litew Exp $
              ;;
          *darwin*|*Darwin*)
              CFLAGS="${CFLAGS} -D__Darwin__"
-@@ -283,7 +284,19 @@
+@@ -283,8 +284,20 @@ AC_CHECK_LIB(m, main,,AC_MSG_ERROR(Sagan needs libm!))
  
  # OSX doesn't have librt - this needs to be fixed!
  
 -AC_CHECK_LIB(rt, main,,AC_MSG_ERROR(Sagan needs librt!))
 +LIBRT=""
 +AC_CHECK_LIB(rt, main,, LIBRT="no")
-+
+ 
 +if test "$LIBRT" = "no"; then
 +    if test "$HAVE_RT" = "yes"; then
 +        echo "   USING BUILTIN RT (OPENBSD)"
@@ -32,6 +33,16 @@ $OpenBSD: patch-configure_ac,v 1.1 2020/02/04 02:26:46 litew Exp $
 +        exit 1
 +    fi
 +fi
- 
++
  # libpthread
  AC_ARG_WITH(libpthread_includes,
+         [  --with-libpthread-includes=DIR  libpthread include directory],
+@@ -598,7 +611,7 @@ To disable this feature use the --disable-bluedot flag
+         fi
+ 
+ test "x$prefix" = x. || test "x$prefix" = xNONE && prefix=/usr/local
+-AC_DEFINE_UNQUOTED(CONFIG_FILE_PATH, "`eval echo "${sysconfdir}/sagan.yaml"`", [Sagan configuration file]) 
++AC_DEFINE_UNQUOTED(CONFIG_FILE_PATH, "`eval echo "${sysconfdir}/sagan/sagan.yaml"`", [Sagan configuration file]) 
+ 
+ AC_DEFINE_UNQUOTED(PACKAGE_NAME, "sagan" )
+ AC_DEFINE_UNQUOTED(PACKAGE_STRING, "Sagan $VERSION")
